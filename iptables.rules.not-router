@@ -15,15 +15,17 @@ $IPT -t mangle -F
 $IPT -X
 
 # drop as much as we can at the beggining
-#$IPT -A INPUT -j DROP
-#$IPT -A FORWARD -j DROP
-# output rule - allow new,established,related conns only on output
 $IPT -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
 # output rule - allow new,established,related conns only on input
 $IPT -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # allow localhost interface
 $IPT -A INPUT -i lo -j ACCEPT
+
+# allow ping
+$IPT -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+$IPT -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
+
 # allow neccesary ports
 $IPT -A INPUT -p tcp -m multiport --dports 22,53,25,465,587,110,143,993,995,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
 $IPT -A OUTPUT -p tcp -m multiport --sports 22,53,25,465,587,110,143,993,995,80,443 -m state --state ESTABLISHED -j ACCEPT
