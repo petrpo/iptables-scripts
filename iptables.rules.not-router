@@ -28,3 +28,5 @@ $IPT -A INPUT -i lo -j ACCEPT
 $IPT -A INPUT -p tcp -m multiport --dports 22,53,25,465,587,110,143,993,995,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
 $IPT -A OUTPUT -p tcp -m multiport --sports 22,53,25,465,587,110,143,993,995,80,443 -m state --state ESTABLISHED -j ACCEPT
 
+$IPT -A INPUT -j DROP
+$IPT -A FORWARD -j DROP
