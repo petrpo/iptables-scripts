@@ -14,9 +14,9 @@ $IPT -t nat -F
 $IPT -t mangle -F
 $IPT -X
 
-# drop as much as we can
-$IPT -A INPUT -j DROP
-$IPT -A FORWARD -j DROP
+# drop as much as we can at the beggining
+#$IPT -A INPUT -j DROP
+#$IPT -A FORWARD -j DROP
 # output rule - allow new,established,related conns only on output
 $IPT -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
 # output rule - allow new,established,related conns only on input
