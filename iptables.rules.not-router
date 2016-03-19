@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# basic iptables to allow ssh,www,imap,smtp,ping and blocke other traffic
+# does not depend on interface
+
+IPT=`which iptables`
+
+# flush iptables
+$IPT -F
+$IPT -t nat -F
+$IPT -t mangle -F
+$IPT -X
+
+# clean ipt
+$IPT -A INPUT -j DROP
+$IPT -A FORWARD -j DROP
+# output rule
+$IPT -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
+
+$IPT -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# allow localhost int
+$IPT -A INPUT -i lo -j ACCEPT
+
+$IPT -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+
+$IPT -A INPUT -j REJECT
+$IPT -A FORWARD -j REJECT
+
