@@ -5,25 +5,26 @@
 
 IPT=`which iptables`
 
-# flush iptables
+# we are not routing
+echo "0" > /proc/sys/net/ipv4/ip_forward
+
+# flush and clean chains
 $IPT -F
 $IPT -t nat -F
 $IPT -t mangle -F
 $IPT -X
 
-# clean ipt
+# drop as much as we can
 $IPT -A INPUT -j DROP
 $IPT -A FORWARD -j DROP
-# output rule
+# output rule - allow new,established,related conns only on output
 $IPT -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
-
+# output rule - allow new,established,related conns only on input
 $IPT -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-# allow localhost int
+# allow localhost interface
 $IPT -A INPUT -i lo -j ACCEPT
-
-$IPT -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
-
-$IPT -A INPUT -j REJECT
-$IPT -A FORWARD -j REJECT
+# allow neccesary ports
+$IPT -A INPUT -p tcp -m multiport --dports 22,53,25,465,587,110,143,993,995,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+$IPT -A OUTPUT -p tcp -m multiport --sports 22,53,25,465,587,110,143,993,995,80,443 -m state --state ESTABLISHED -j ACCEPT
 
