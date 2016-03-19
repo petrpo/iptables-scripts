@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# basic iptables to clean iptables
+
+IPT=`which iptables`
+
+# we are not routing
+echo "0" > /proc/sys/net/ipv4/ip_forward
+
+# flush and clean chains
+$IPT -F
+$IPT -t nat -F
+$IPT -t mangle -F
+$IPT -X
+
+$IPT -A INPUT -j ACCEPT
+$IPT -A OUTPUT -j ACCEPT
+$IPT -A FORWARD -j ACCEPT
