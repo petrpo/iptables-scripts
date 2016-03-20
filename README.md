@@ -5,7 +5,7 @@ Can probably help with setting of iptables remotely and avoid a linux host locke
 ## 2016-03-19
 
 ## files:
-### iptables.rules.accept      ; allow all connections
-### iptables.rules.drop        ; disable all connections
-### iptables.rules.not-router  ; allow basic connections and not lock linux host 
-### iptables.rules-router      ; linux as a router - still not done
+- iptables.rules.accept      ; allow all connections
+- iptables.rules.drop        ; disable all connections
+- iptables.rules.not-router  ; allow basic connections and not lock linux host 
+- iptables.rules-router      ; linux as a router - still not done
