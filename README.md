@@ -1,6 +1,6 @@
 # iptables scripts
 
-Can probably help with setting of iptables remotely and avoid a linux host locked and go to a console again
+It may help you with remote iptables settings to lock linux host and go to a console
 
 - 2016-03-19 first version
 
