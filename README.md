@@ -6,6 +6,7 @@ It may help you with remote iptables settings to lock linux host and go to a con
 
 ## files:
 - iptables.rules.accept
+
 allow all connections
 
 - iptables.rules.drop
