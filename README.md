@@ -5,18 +5,18 @@ It may help you with remote iptables settings to lock linux host and go to a con
 - 2016-03-19 first version
 
 ## files:
-- iptables.rules.accept
+iptables.rules.accept
 
-allow all connections
+- allow all connections
 
-- iptables.rules.drop
+iptables.rules.drop
 
-disable all connections
+- disable all connections
 
-- iptables.rules.not-router
+iptables.rules.not-router
 
-allow basic connections and not lock linux host 
+- allow basic connections and not lock linux host 
 
-- iptables.rules-router
+iptables.rules-router
 
-linux as a router - still not done
+- linux as a router - still not done
