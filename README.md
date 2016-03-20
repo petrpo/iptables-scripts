@@ -9,3 +9,5 @@ It may help you with remote iptables settings to lock linux host and go to a con
 - iptables.rules.drop        ; disable all connections
 - iptables.rules.not-router  ; allow basic connections and not lock linux host 
 - iptables.rules-router      ; linux as a router - still not done
+- 
+-- te
