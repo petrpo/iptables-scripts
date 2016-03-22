@@ -14,15 +14,15 @@ iptables.rules.block-all
 
 - disable all connections. A linux host is totally isolated (OUTPUT, INPUT). All connections is REALLY BLOCKED !!!!! BE CAREFULL with this script!!! ). For testing purposes and AT a CONSOLE ONLY !!!!
 
-iptables.rules.not-routing
+iptables.rules.not-forwarding
 
 - allow basic connections (ssh,dns,http,https,imap,imap,pop3,pop3s,smtp,smtps,) and not lock linux host
-- FORWARDing OFF (no router)
+- FORWARD chains is OFF (not router)
 
-iptables.rules.routing-as-router
+iptables.rules.forwarding
 
 - linux as a router (some PREROUTING,POSTROUTING)- still not done
-- FORWARDing ON (router)
+- FORWARD chain is ON (router)
 
 
 
