@@ -16,6 +16,7 @@ $IPT -X
 
 # allow localhost interface
 $IPT -A INPUT -i lo -j ACCEPT
+$IPT -A OUTPUT -o lo -j ACCEPT
 
 # allow ping from inside
 $IPT -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
