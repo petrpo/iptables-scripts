@@ -26,6 +26,10 @@ $IPT -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
 $IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 $IPT -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
 
+# UDP port for DNS
+$IPT -A OUTPUT -p udp --dport 53 -j ACCEPT
+$IPT -A INPUT -p udp --sport 53 -j ACCEPT
+
 # drop as much as we can at the beggining
 $IPT -A OUTPUT -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT
 # output rule - allow new,established,related conns only on input
