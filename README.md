@@ -6,11 +6,11 @@ It may help you with iptables settings to not lock remote linux host and go to a
 
 ## files:
 
-iptables.rules.accept
+iptables.rules.accept-all
 
 - allow all connections on INPUT on all ethernet interfaces
 
-iptables.rules.drop
+iptables.rules.block-all
 
 - disable all connections. A linux host is totally isolated (OUTPUT, INPUT). All connections is REALLY BLOCKED !!!!! BE CAREFULL with this script!!! ). For testing purposes and AT a CONSOLE ONLY !!!!
 
@@ -18,6 +18,11 @@ iptables.rules.not-router
 
 - allow basic connections (ssh,dns,http,https,imap,imap,pop3,pop3s,smtp,smtps,) and not lock linux host
 
-iptables.rules-router
+iptables.rules.as-router
 
 - linux as a router (some PREROUTING,POSTROUTING)- still not done
+
+
+
+
+
